@@ -10,12 +10,7 @@
   }
   function getJSON(url, callback) {
     return get(url, function getJSONCallback(data) {
-      try {
-        callback(JSON.parse(data));
-      } catch (e) {
-        e.message = 'Unable to parse JSON. ' + e.message;
-        throw e;
-      }
+      callback(JSON.parse(data));
     });
   }
   function pickHTML(html, elementId) {
@@ -31,7 +26,9 @@
   }
   function post(url, data, callback) {
     var req = new XMLHttpRequest();
-    req.onload = callback(req.responseText);
+    req.onload = function() {
+      callback(req.responseText);
+    };
     var segments = [];
     req.open('post', url, true);
     req.setRequestHeader('Content-Type', 'application\/json');
