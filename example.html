@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>luigiJS</title>
+  <style>
+    body {
+      font-family: arial, sans-serif;
+      padding: 0 15px;
+      max-width: 960px;
+      margin: 0 auto;
+      color: #333;
+    }
+    blockquote {
+      font-size: 22px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>luigiJS</h1>
+  <p id="luigitarget">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempus tristique risus in malesuada. <strong>Phasellus scelerisque</strong> velit ut elit venenatis, consequat dapibus nulla sodales. Duis tincidunt, justo et dictum cursus, ligula enim <span style="text-decoration:underline">Sagittis</span> est, ac porta diam velit bibendum augue.</p>
+
+  <p id="luigitarget-two"><blockquote><em>"Proin velit mauris, varius at tempor ac, pharetra eu lorem"</em></blockquote></p>
+
+    <p id="luigitarget-three" style="margin-bottom:50px">Vivamus vehicula dolor lobortis justo elementum, non dictum orci ornare. Cras tincidunt eget dolor at accumsan:</p>
+
+  <button onclick="load()">Load fragments</button>
+  <button onclick="json()">Load json</button>
+
+  <h3>Result</h3>
+  <div id="output" style="min-height: 200px"></div>
+
+  <script src="luigi.js"></script>
+  <script>
+    var load = (function() {
+      var _loadTargets = ['luigitarget', 'luigitarget-two', 'luigitarget-three'];
+      var _index = 0;
+
+      return function() {
+        if ( _index === _loadTargets.length ) _index = 0;
+        luigi.getHTML('/', _loadTargets[_index++], function(data) {
+          window.output.innerHTML = data;
+        });
+      }
+    }());
+
+    function json() {
+      luigi.getJSON('/test.json', function(data) {
+        console.log(data);
+        var res = JSON.stringify(data, null, 2)
+        .replace(/\n/g, '<br>')
+        .replace(/ /g, '&nbsp;');
+        window.output.innerHTML = '<p style="font-family: consolas, monospace">'
+          + res + '</p>';
+      });
+    }
+  </script>
+</body>
+</html>
