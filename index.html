@@ -39,14 +39,14 @@
 
       return function() {
         if ( _index === _loadTargets.length ) _index = 0;
-        luigi.getHTML('/', _loadTargets[_index++], function(data) {
+        luigi.getHTML(window.location.href, _loadTargets[_index++], function(data) {
           window.output.innerHTML = data;
         });
       }
     }());
 
     function json() {
-      luigi.getJSON('/test.json', function(data) {
+      luigi.getJSON(window.location.href + '/test.json', function(data) {
         console.log(data);
         var res = JSON.stringify(data, null, 2)
         .replace(/\n/g, '<br>')
