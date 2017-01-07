@@ -1,0 +1,28 @@
+{
+  "name": "luigi",
+  "version": "1.0.0",
+  "description": "Micro library for making AJAX requests",
+  "main": "luigi.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "readme": "jsdoc2md --template doc/README.hbs luigi.js > README.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucianBuzzo/luigi.git"
+  },
+  "keywords": [
+    "AJAX",
+    "micro",
+    "utility"
+  ],
+  "author": "Lucian Buzzo <lucian.buzzo@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LucianBuzzo/luigi/issues"
+  },
+  "homepage": "https://github.com/LucianBuzzo/luigi#readme"
+}
