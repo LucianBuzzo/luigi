@@ -120,7 +120,7 @@
    *
    * @param {String} url - The url to send a request to
    * @param {Object} data - The data to send as the request body
-   * @param {Function} callback - function called with the HTML element if present, else an empty string.
+   * @param {Function} callback - function called with response test from the server
    *
    * @return {Object} - An XMLHttpRequest object.
    *
@@ -134,7 +134,7 @@
     req.onload = function() {
       callback(req.responseText);
     };
-    req.open('post', url, true);
+    req.open('POST', url, true);
     req.setRequestHeader('Content-Type', 'application\/json');
     req.send(JSON.stringify(data));
     return req;
