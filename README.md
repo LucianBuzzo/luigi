@@ -13,6 +13,8 @@ Simple use a script tag to load luigi at the bottom of your pages `<body>` tag.
 
 # Documentation
 
+Calling the `luigi` function directly will run `luigi.get()`.
+
 
 * [luigi](#module_luigi)
     * [.get(url, callback)](#module_luigi.get) ⇒ <code>Object</code>
@@ -86,7 +88,7 @@ var html = '<p><h1>FOO</h1><span id="subtitle">BAR</span></p>';var element = pi
 | --- | --- | --- |
 | url | <code>String</code> | The url to send a request to |
 | data | <code>Object</code> | The data to send as the request body |
-| callback | <code>function</code> | function called with the HTML element if present, else an empty string. |
+| callback | <code>function</code> | function called with response test from the server |
 
 **Example**  
 ```js
