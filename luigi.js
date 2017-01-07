@@ -1,4 +1,10 @@
-!(function() {
+!(function (root, factory) {
+  if (typeof module === 'object' && module.exports) {
+    module.exports = factory();
+  } else {
+    root.luigi = factory();
+  }
+}(this, function factory() {
   /**
    * @module luigi
    */
@@ -141,5 +147,5 @@
   luigi.getHTML = getHTML;
   luigi.post = post;
 
-  window.luigi = luigi;
-}());
+  return luigi;
+}));
