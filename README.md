@@ -60,7 +60,7 @@ luigi.getJSON('/example.html', function callback(responseData) {  console.log(r
 
 ### luigi.getHTML(url, elementId, callback) ⇒ <code>Object</code>
 **Kind**: static method of <code>[luigi](#module_luigi)</code>  
-**Summary**: Retrieves an HTML element from a page loaded with AJAX  
+**Summary**: Retrieves the contents of an HTML element from a page loaded with AJAX  
 **Returns**: <code>Object</code> - - An XMLHttpRequest object.  
 **Access:** public  
 
@@ -68,11 +68,11 @@ luigi.getJSON('/example.html', function callback(responseData) {  console.log(r
 | --- | --- | --- |
 | url | <code>String</code> | The url to send a request to |
 | elementId | <code>String</code> | The id of the element to search for |
-| callback | <code>function</code> | function called with the HTML element if present, else an empty string. |
+| callback | <code>function</code> | function called with the content of the HTML element if present, else an empty string. |
 
 **Example**  
 ```js
-var html = '<p><h1>FOO</h1><span id="subtitle">BAR</span></p>';var element = pickHTML(html, 'subtitle');console.log(element); // --> '<span id="subtitle">BAR</span>'
+var html = '<p><h1>FOO</h1><span id="subtitle">BAR</span></p>';var element = pickHTML(html, 'subtitle');console.log(element); // --> 'BAR'
 ```
 <a name="module_luigi.post"></a>
 

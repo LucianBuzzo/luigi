@@ -31,7 +31,7 @@
     req.onload = function() {
       callback(this.responseText);
     };
-    req.open('get', url, true);
+    req.open('GET', url, true);
     req.send();
     return req;
   }
@@ -83,20 +83,19 @@
   function pickHTML(html, elementId) {
     var regexp = new RegExp("<(?!\!)\\s*([^\\s>]+)[^>]*\\s+id\\=[\"\']" + elementId + "[\"\'][^>]*>", "i");
     var res = regexp.exec(html);
-    console.log(res);
     return res ? (new RegExp('(?:(?:.(?!<\\s*' + res[1] + '[^>]*[>]))*.?<\\s*' + res[1] + '[^>]*[>](?:.(?!<\\s*\/\\s*' + res[1] + '\\s*>))*.?<\\s*\/\\s*' + res[1] + '\\s*>)*(?:.(?!<\\s*\/\\s*' + res[1] + '\\s*>))*.?', 'i')).exec(html.slice(html.indexOf(res[0]) + res[0].length))[0] || '' : '';
   }
 
 
   /**
-   * @summary Retrieves an HTML element from a page loaded with AJAX
+   * @summary Retrieves the contents of an HTML element from a page loaded with AJAX
    * @memberof module:luigi
    * @function
    * @public
    *
    * @param {String} url - The url to send a request to
    * @param {String} elementId - The id of the element to search for
-   * @param {Function} callback - function called with the HTML element if present, else an empty string.
+   * @param {Function} callback - function called with the content of the HTML element if present, else an empty string.
    *
    * @return {Object} - An XMLHttpRequest object.
    *
@@ -104,7 +103,7 @@
    *
    * var html = '<p><h1>FOO</h1><span id="subtitle">BAR</span></p>';
    * var element = pickHTML(html, 'subtitle');
-   * console.log(element); // --> '<span id="subtitle">BAR</span>'
+   * console.log(element); // --> 'BAR'
    */
   function getHTML(url, elementId, callback) {
     return get(url, function getHTMLCallback(data) {
